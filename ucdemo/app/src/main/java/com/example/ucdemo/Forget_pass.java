@@ -36,38 +36,41 @@ public class Forget_pass extends AppCompatActivity {
 
         Email = email.getText().toString().trim();
 
+        if(Email.equals(""))
+        {
+            Toast.makeText(this,"Enter Email",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/forgot_password/email_verify.php", response -> {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/forgot_password/email_verify.php", response -> {
-
-            if(response.equalsIgnoreCase("success")) {
-                Toast.makeText(this,"executed:", Toast.LENGTH_SHORT).show();
-
-
-                Intent intent = new Intent(this,Forget_pass_otp.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("email",Email);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-            else
-                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
-
-        },
-                error -> Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show()
-        ){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("email",Email);
+                if (response.equalsIgnoreCase("success")) {
+                    Toast.makeText(this, "executed:", Toast.LENGTH_SHORT).show();
 
 
-                return params;
-            }
-        };
+                    Intent intent = new Intent(this, Forget_pass_otp.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", Email);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } else
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(request);
+            },
+                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()
+            ) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("email", Email);
 
+
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(request);
+        }
     }
     }
 
