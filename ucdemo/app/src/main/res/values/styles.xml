@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchCompat">
+<!--        <item name="colorControlActivated">@color/white</item>-->
+        <item name="thumbTint">@color/white</item>
+        <item name="trackTint">@color/grey</item>
+    </style>
+
+    <color name="grey">#BEBCBC</color>
+</resources>
