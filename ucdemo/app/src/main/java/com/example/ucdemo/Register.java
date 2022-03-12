@@ -38,6 +38,8 @@ public class Register extends AppCompatActivity {
         pincode= findViewById(R.id.pincode);
     }
     public void movetologin(View view) {
+
+
         String FName = fname.getText().toString().trim();
         String LName = lname.getText().toString().trim();
         String Ph_no = ph_no.getText().toString().trim();
@@ -48,40 +50,69 @@ public class Register extends AppCompatActivity {
         String Pincode = pincode.getText().toString().trim();
         String Password = password.getText().toString().trim();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/insert.php", response -> {
+        if (FName.equals("")) {
+            Toast.makeText(this, "Enter Fname", Toast.LENGTH_SHORT).show();
+        }
+        else if (LName.equals("")) {
+            Toast.makeText(this, "Enter Lname", Toast.LENGTH_SHORT).show();
+        }
+        else if (Email.equals("")) {
+            Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show();
+        }
+        else if (Ph_no.equals("")) {
+            Toast.makeText(this, "Enter Ph_no", Toast.LENGTH_SHORT).show();
+        }
+        else if (Address.equals("")) {
+            Toast.makeText(this,"Enter Address",Toast.LENGTH_SHORT).show();
+        }
+        else if (State.equals("")) {
+            Toast.makeText(this, "Enter State", Toast.LENGTH_SHORT).show();
+        }
+        else if (City.equals("")) {
+            Toast.makeText(this, "Enter City", Toast.LENGTH_SHORT).show();
+        }
+        else if (Pincode.equals("")) {
+            Toast.makeText(this, "Enter Pincode", Toast.LENGTH_SHORT).show();
+        }
+        else if (Password.equals("")) {
+            Toast.makeText(this,"Enter Password",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/insert.php", response -> {
 
-            if (response.equalsIgnoreCase("Data Inserted"))
-                Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                if (response.equalsIgnoreCase("Data Inserted"))
+                    Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
-        },
-                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()
-        ) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("fname", FName);
-                params.put("lname", LName);
-                params.put("ph_no", Ph_no);
-                params.put("address", Address);
-                params.put("city", City);
-                params.put("pincode", Pincode);
-                params.put("state", State);
-                params.put("password", Password);
-                params.put("email", Email);
+            },
+                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()
+            ) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("fname", FName);
+                    params.put("lname", LName);
+                    params.put("ph_no", Ph_no);
+                    params.put("address", Address);
+                    params.put("city", City);
+                    params.put("pincode", Pincode);
+                    params.put("state", State);
+                    params.put("password", Password);
+                    params.put("email", Email);
 
 
-                return params;
-            }
-        };
+                    return params;
+                }
+            };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(request);
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(request);
 
-        Intent intent = new Intent(getApplicationContext(),Login.class);
-        startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
 
-        finish();
+            finish();
+        }
     }
 }
