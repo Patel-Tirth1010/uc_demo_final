@@ -71,6 +71,7 @@ public class Login extends AppCompatActivity {
 
         if (r_cust.isChecked() || r_emp.isChecked() || r_admin.isChecked()) {
             flag = true;
+            
         } else{
             flag = false;
             Toast.makeText(this, "Please Select Login As:", Toast.LENGTH_SHORT).show();

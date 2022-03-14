@@ -34,6 +34,7 @@ public class Changepass extends AppCompatActivity {
 
     public void setNewpass(View view){
         Bundle bundle = getIntent().getExtras();
+
         Email = bundle.getString("email");
         String p1 = Objects.requireNonNull(newpass.getText()).toString().trim();
         String p2 = Objects.requireNonNull(newpass1.getText()).toString().trim();

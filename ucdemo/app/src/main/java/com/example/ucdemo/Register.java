@@ -46,6 +46,7 @@ public class Register extends AppCompatActivity {
         String Email = email.getText().toString().trim();
         String Address = address.getText().toString().trim();
         String City = city.getText().toString().trim();
+
         String State = state.getText().toString().trim();
         String Pincode = pincode.getText().toString().trim();
         String Password = password.getText().toString().trim();

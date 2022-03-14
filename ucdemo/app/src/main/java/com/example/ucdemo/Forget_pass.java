@@ -52,6 +52,7 @@ public class Forget_pass extends AppCompatActivity {
                     bundle.putString("email", Email);
                     intent.putExtras(bundle);
                     startActivity(intent);
+
                 } else
                     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
 
