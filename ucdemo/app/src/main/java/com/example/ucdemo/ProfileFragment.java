@@ -157,7 +157,7 @@ public class ProfileFragment extends Fragment{
                     return params;
                 }
             };
-            
+
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
