@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/circle.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/switch_color.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/drawable/tgl_btn.xml" value="0.146875" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/activity_forget_pass.xml" value="0.134765625" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/activity_forget_pass_otp.xml" value="0.134765625" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/activity_nav_bar.xml" value="0.134765625" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/fragment_bookings.xml" value="0.134765625" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/fragment_home.xml" value="0.134765625" />
+        <entry key="..\:/Users/patel/OneDrive/Documents/GitHub/uc_demo_final/ucdemo/app/src/main/res/layout/fragment_profile.xml" value="0.134765625" />
         <entry key="..\:/ucdemo/app/src/main/res/drawable/back.xml" value="0.19583333333333333" />
         <entry key="..\:/ucdemo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.125" />
         <entry key="..\:/ucdemo/app/src/main/res/drawable/rect.xml" value="0.19583333333333333" />

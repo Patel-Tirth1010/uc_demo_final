@@ -15,7 +15,6 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 public class nav_bar extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
-    TextView t1;
     Fragment fragment;
     Boolean exit=false;
     @Override
@@ -25,7 +24,6 @@ public class nav_bar extends AppCompatActivity {
 
         //Assign Variable
         bottomNavigation = findViewById(R.id.bottom_nav);
-        t1 = findViewById(R.id.t1);
 
         //Add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home_24));
@@ -94,7 +92,7 @@ public void loadFragment(Fragment fragment)
 {
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-    transaction.replace(R.id.framecontainer,fragment);
+    transaction.replace(R.id.framelayoutforfragment,fragment);
     transaction.commit();
 }
 

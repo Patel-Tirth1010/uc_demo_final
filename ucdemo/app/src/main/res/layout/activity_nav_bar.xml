@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.circularreveal.CircularRevealFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/framecontainer"
+    android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/four"
-    tools:context=".nav_bar"
-    android:orientation="vertical">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    >
-   <TextView
-       android:id="@+id/t1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
-</LinearLayout>
+    tools:context=".nav_bar">
+
+
+    <FrameLayout
+        android:id="@+id/framelayoutforfragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </FrameLayout>
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:mbn_backgroundBottomColor="@color/two"
+        android:background="@color/three"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/framelayoutforfragment"
+        app:layout_constraintVertical_bias="1.0"
+        app:mbn_backgroundBottomColor="@color/four"
         app:mbn_circleColor="@color/white"
         app:mbn_countBackgroundColor="#ff6f00"
         app:mbn_countTextColor="@color/white"
-        app:mbn_defaultIconColor="@color/white"
-        app:mbn_selectedIconColor="@color/three" />
+        app:mbn_defaultIconColor="@color/two"
+        app:mbn_selectedIconColor="@color/one" />
 
 
-
-</com.google.android.material.circularreveal.CircularRevealFrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
