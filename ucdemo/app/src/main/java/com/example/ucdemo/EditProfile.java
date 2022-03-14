@@ -1,11 +1,11 @@
 package com.example.ucdemo;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,75 +14,87 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity implements View.OnClickListener{
 
-    TextInputEditText fname,lname,email,address,city,state,pincode,password,ph_no;
 
+    TextInputEditText fname,lname,email,address,city,state,pincode,ph_no;
+    MaterialButton update,cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_edit_profile);
+        Bundle bundle = new Bundle();
+        bundle = getIntent().getExtras();
 
+        update = findViewById(R.id.updateprof);
+        cancel = findViewById(R.id.cancelchange);
         fname= findViewById(R.id.fname);
         lname= findViewById(R.id.lname);
         ph_no= findViewById(R.id.ph);
         email= findViewById(R.id.email);
-        password= findViewById(R.id.password);
         address= findViewById(R.id.address);
         city= findViewById(R.id.city);
         state= findViewById(R.id.state);
         pincode= findViewById(R.id.pincode);
+
+        fname.setText(bundle.getString("fname"));
+        lname.setText(bundle.getString("lname"));
+        ph_no.setText(bundle.getString("ph_no"));
+        email.setText(bundle.getString("email"));
+        address.setText(bundle.getString("address"));
+        city.setText(bundle.getString("city"));
+        state.setText(bundle.getString("state"));
+        pincode.setText(bundle.getString("pincode"));
+
+        Toast.makeText(getApplicationContext(),bundle.getString("pincode"),Toast.LENGTH_SHORT).show();
+
+
+        update.setOnClickListener(this);
     }
-    public void movetologin(View view) {
-        String FName = fname.getText().toString().trim();
-        String LName = lname.getText().toString().trim();
+
+    @Override
+    public void onClick(View v) {
+
+        String Fname = fname.getText().toString().trim();
+        String Lname = lname.getText().toString().trim();
         String Ph_no = ph_no.getText().toString().trim();
         String Email = email.getText().toString().trim();
         String Address = address.getText().toString().trim();
         String City = city.getText().toString().trim();
         String State = state.getText().toString().trim();
         String Pincode = pincode.getText().toString().trim();
-        String Password = password.getText().toString().trim();
-        if (FName.equals("")) {
+
+        if (Fname.equals("")) {
             Toast.makeText(this, "Enter Fname", Toast.LENGTH_SHORT).show();
-        }
-        else if (LName.equals("")) {
+        } else if (Lname.equals("")) {
             Toast.makeText(this, "Enter Lname", Toast.LENGTH_SHORT).show();
-        }
-        else if (Email.equals("")) {
+        } else if (Email.equals("")) {
             Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show();
-        }
-        else if (Ph_no.equals("")) {
+        } else if (Ph_no.equals("")) {
             Toast.makeText(this, "Enter Ph_no", Toast.LENGTH_SHORT).show();
-        }
-        else if (Address.equals("")) {
-            Toast.makeText(this,"Enter Address",Toast.LENGTH_SHORT).show();
-        }
-        else if (State.equals("")) {
+        } else if (Address.equals("")) {
+            Toast.makeText(this, "Enter Address", Toast.LENGTH_SHORT).show();
+        } else if (State.equals("")) {
             Toast.makeText(this, "Enter State", Toast.LENGTH_SHORT).show();
-        }
-        else if (City.equals("")) {
+        } else if (City.equals("")) {
             Toast.makeText(this, "Enter City", Toast.LENGTH_SHORT).show();
-        }
-        else if (Pincode.equals("")) {
+        } else if (Pincode.equals("")) {
             Toast.makeText(this, "Enter Pincode", Toast.LENGTH_SHORT).show();
-        }
-        else if (Password.equals("")) {
-            Toast.makeText(this,"Enter Password",Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
 
             StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/insert.php", response -> {
 
-                if (response.equalsIgnoreCase("Data Inserted")) {
-                    Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                if (response.equalsIgnoreCase("Info. Updated Successfully")) {
+                    Toast.makeText(getApplicationContext(), "Data Updated", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(),nav_bar.class);
                     startActivity(intent);
+                    finish();
                 } else
                     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
@@ -92,14 +104,13 @@ public class Register extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("fname", FName);
-                    params.put("lname", LName);
+                    params.put("fname", Fname);
+                    params.put("lname", Lname);
                     params.put("ph_no", Ph_no);
                     params.put("address", Address);
                     params.put("city", City);
                     params.put("pincode", Pincode);
                     params.put("state", State);
-                    params.put("password", Password);
                     params.put("email", Email);
 
                     return params;
@@ -108,7 +119,6 @@ public class Register extends AppCompatActivity {
 
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(request);
-
         }
         finish();
     }

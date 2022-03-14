@@ -37,8 +37,11 @@ public class Changepass extends AppCompatActivity {
         Email = bundle.getString("email");
         String p1 = Objects.requireNonNull(newpass.getText()).toString().trim();
         String p2 = Objects.requireNonNull(newpass1.getText()).toString().trim();
-
-        if(p1.equals(p2))
+        if(p1.equals("") || p2.equals(""))
+        {
+            Toast.makeText(this,"Enter Password",Toast.LENGTH_SHORT).show();
+        }
+        else if(p1.equals(p2))
         {
 
             StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/forgot_password/change_password.php", response -> {
@@ -67,5 +70,7 @@ public class Changepass extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(request);
         }
+        else
+            Toast.makeText(getApplicationContext(),"Password Does not match",Toast.LENGTH_SHORT).show();
     }
 }

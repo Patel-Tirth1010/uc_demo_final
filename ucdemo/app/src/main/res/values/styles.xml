@@ -8,7 +8,7 @@
 
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">40%</item>
+        <item name="cornerSize">50%</item>
     </style>
     <color name="grey">#BEBCBC</color>
 </resources>

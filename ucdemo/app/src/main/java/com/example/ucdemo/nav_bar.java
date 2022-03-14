@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 
@@ -21,14 +22,17 @@ public class nav_bar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_bar);
+        Bundle bundle = getIntent().getExtras();
+        String Email = bundle.getString("email");
 
+        Log.d("email bundle", ""+Email);
         //Assign Variable
         bottomNavigation = findViewById(R.id.bottom_nav);
 
         //Add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_baseline_home_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_baseline_notifications_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_info_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_person_24));
 
 
 
@@ -46,7 +50,7 @@ public class nav_bar extends AppCompatActivity {
                         break;
 
                     case 3:
-                        fragment = new ProfileFragment();
+                        fragment = new ProfileFragment(Email);
                         break;
 
                 }
@@ -71,7 +75,7 @@ public class nav_bar extends AppCompatActivity {
                         break;
 
                     case 3:
-                        fragment = new ProfileFragment();
+                        fragment = new ProfileFragment(Email);
 
                         break;
 

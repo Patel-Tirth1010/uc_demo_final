@@ -5,16 +5,165 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
     android:background="@color/three"
     android:orientation="vertical"
-    >
+    android:paddingTop="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:gravity="center"
-        android:textSize="30dp"/>
+        android:layout_height="wrap_content"
+        android:text="Urban Clap"
+        android:textSize="25dp"
+        android:textStyle="bold|italic"
+        android:fontFamily="cursive"
+        android:layout_marginBottom="30dp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/ten"
+                app:cardMaxElevation="30dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/kitchen"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kitchen Cleaning"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="30dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/ten"
+                app:cardMaxElevation="30dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/bathroomcleaning"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bathroom Cleaning"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="15dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/ten"
+                app:cardMaxElevation="30dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/pestc"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pest Control"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="40dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/ten"
+                app:cardMaxElevation="30dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/acrepair"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AC Maintenence"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="20dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardElevation="10dp"
+                app:cardBackgroundColor="@color/ten"
+                app:cardMaxElevation="30dp"
+                app:cardCornerRadius="10dp"
+                android:clickable="true">
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/haircut"
+                    android:layout_margin="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hair Cutting"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="40dp"
+                    />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

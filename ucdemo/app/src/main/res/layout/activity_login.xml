@@ -177,6 +177,7 @@
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/r_cust"
             android:fontFamily="sans-serif-light"
             android:padding="5dp"
             android:text="Customer" />
@@ -184,6 +185,7 @@
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/r_emp"
             android:layout_marginStart="15dp"
             android:fontFamily="sans-serif-light"
             android:padding="5dp"
@@ -192,6 +194,7 @@
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/r_admin"
             android:layout_marginStart="15dp"
             android:fontFamily="sans-serif-light"
             android:padding="5dp"

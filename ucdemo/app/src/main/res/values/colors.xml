@@ -13,5 +13,11 @@
     <color name="four">#DBD8E3</color>
     <color name="red">#9E3A33</color>
     <color name="blue">#2956AA</color>
+    <color name="five">#707595</color>
+    <color name="six">#222831</color>
+    <color name="seven">#393e46</color>
+    <color name="eight">#fd7014</color>
+    <color name="nine">#eeeeee</color>
+    <color name="ten">#534E61</color>
 
 </resources>
