@@ -24,7 +24,7 @@ public class nav_bar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_bar);
-        save_data = getSharedPreferences("SAVE DATA", MODE_PRIVATE);
+        save_data = getSharedPreferences("SAVE_DATA", MODE_PRIVATE);
         String Email = save_data.getString("email","null");
 
         Log.d("email bundle", ""+Email);
@@ -37,6 +37,12 @@ public class nav_bar extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_baseline_person_24));
 
 
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+                return;
+            }
+        });
 
         bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
             @Override
@@ -102,6 +108,7 @@ public void loadFragment(Fragment fragment)
     transaction.commit();
 }
 
+
     @Override
     public void onBackPressed() {
         bottomNavigation.show(1, true);
@@ -113,11 +120,6 @@ public void loadFragment(Fragment fragment)
         exit = true;
     }
 
-
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//    }
 }
 
 

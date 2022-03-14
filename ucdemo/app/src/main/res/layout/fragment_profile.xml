@@ -108,6 +108,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="20dp"
             android:text="EDIT PROFILE "
+            android:padding="10dp"
+            android:gravity="center_vertical"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="25dp"

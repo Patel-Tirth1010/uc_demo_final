@@ -102,17 +102,6 @@ public class ProfileFragment extends Fragment{
 
         editprofile.setOnClickListener(v -> {
 
-//                StringRequest request1 = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/edit_profile/Retrive_data.php",response -> {},
-//                        error -> Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show()
-//                ) {
-//                    @Override
-//                    protected Map<String, String> getParams() throws AuthFailureError {
-//                        Map<String, String> params = new HashMap<String, String>();
-//                        params.put("email", Email);
-//                        return params;
-//                    }
-//                };
-
             StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/edit_profile/Retrive_data.php", response -> {
 
                 try {
@@ -122,10 +111,10 @@ public class ProfileFragment extends Fragment{
 
 
                     if (success.equals("1")) {
-                    Toast.makeText(getContext(),"enterd",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(),"enterd",Toast.LENGTH_SHORT).show();
                         for (int i = 0; i < jsonArray.length(); i++) {
 
-                    Toast.makeText(getContext(),"enterd2",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(),"enterd2",Toast.LENGTH_SHORT).show();
                             Log.e( "json", "onResponse: array executed");
 
                             JSONObject object;
@@ -152,7 +141,7 @@ public class ProfileFragment extends Fragment{
                             intent.putExtras(bundle);
                             startActivity(intent);
 
-                            Toast.makeText(getContext(),fname+lname+ph_no+email+address+city+state+pincode,Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(),fname+lname+ph_no+email+address+city+state+pincode,Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (JSONException je) {
@@ -168,9 +157,7 @@ public class ProfileFragment extends Fragment{
                     return params;
                 }
             };
-
-//                RequestQueue requestQueue1 = Volley.newRequestQueue(getActivity());
-//                requestQueue1.add(request1);
+            
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 

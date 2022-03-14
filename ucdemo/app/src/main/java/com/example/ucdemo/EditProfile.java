@@ -34,6 +34,8 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         bundle = getIntent().getExtras();
+        save_data = getSharedPreferences("SAVE_DATA", MODE_PRIVATE);
+        editor = save_data.edit();
 
         update = findViewById(R.id.updateprof);
         cancel = findViewById(R.id.cancelchange);
@@ -55,11 +57,17 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         state.setText(bundle.getString("state"));
         pincode.setText(bundle.getString("pincode"));
 
-        Toast.makeText(getApplicationContext(),"hey",Toast.LENGTH_SHORT).show();
 
 
         update.setOnClickListener(this);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
 
     @Override
     public void onClick(View v) {
@@ -74,8 +82,6 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         String Pincode = pincode.getText().toString().trim();
 
         editor.putString("email",Email);
-        save_data = getSharedPreferences("SAVE_DATA", MODE_PRIVATE);
-        editor = save_data.edit();
         editor.commit();
         editor.apply();
 
@@ -106,7 +112,6 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                     startActivity(intent);
                     finish();
                 } else {
-                    Log.d("response", response);
                     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                 }
             },
