@@ -4,7 +4,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,14 +24,15 @@ import java.util.Map;
 
 public class EditProfile extends AppCompatActivity implements View.OnClickListener{
 
-
+    Bundle bundle;
     TextInputEditText fname,lname,email,address,city,state,pincode,ph_no;
     MaterialButton update,cancel;
+    SharedPreferences save_data;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        Bundle bundle = new Bundle();
         bundle = getIntent().getExtras();
 
         update = findViewById(R.id.updateprof);
@@ -52,7 +55,7 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         state.setText(bundle.getString("state"));
         pincode.setText(bundle.getString("pincode"));
 
-        Toast.makeText(getApplicationContext(),bundle.getString("pincode"),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"hey",Toast.LENGTH_SHORT).show();
 
 
         update.setOnClickListener(this);
@@ -69,6 +72,13 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
         String City = city.getText().toString().trim();
         String State = state.getText().toString().trim();
         String Pincode = pincode.getText().toString().trim();
+
+        editor.putString("email",Email);
+        save_data = getSharedPreferences("SAVE_DATA", MODE_PRIVATE);
+        editor = save_data.edit();
+        editor.commit();
+        editor.apply();
+
 
         if (Fname.equals("")) {
             Toast.makeText(this, "Enter Fname", Toast.LENGTH_SHORT).show();
@@ -88,16 +98,17 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "Enter Pincode", Toast.LENGTH_SHORT).show();
         } else {
 
-            StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/insert.php", response -> {
+            StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/edit_profile/Update_data.php", response -> {
 
-                if (response.equalsIgnoreCase("Info. Updated Successfully")) {
+                if (response.equalsIgnoreCase("success")) {
                     Toast.makeText(getApplicationContext(), "Data Updated", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(),nav_bar.class);
                     startActivity(intent);
                     finish();
-                } else
+                } else {
+                    Log.d("response", response);
                     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-
+                }
             },
                     error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()
             ) {
@@ -111,7 +122,8 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                     params.put("city", City);
                     params.put("pincode", Pincode);
                     params.put("state", State);
-                    params.put("email", Email);
+                    params.put("newemail", Email);
+                    params.put("oldemail", bundle.getString("email"));
 
                     return params;
                 }
@@ -120,6 +132,5 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(request);
         }
-        finish();
     }
 }

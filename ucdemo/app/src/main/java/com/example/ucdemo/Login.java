@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
         save_data = getSharedPreferences("SAVE_DATA", MODE_PRIVATE);
         editor = save_data.edit();
         String login = save_data.getString("login", "false");
-        if (login.equals("true1")) {
+        if (login.equals("true")) {
             Intent intent = new Intent(getApplicationContext(), nav_bar.class);// New activity
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
@@ -113,14 +113,13 @@ public class Login extends AppCompatActivity {
                     if (success.equals("1")) {
                         Intent intent = new Intent(getApplicationContext(), nav_bar.class);// New activity
 //                        Bundle bundle = new Bundle();
-                        bundle.putString("email", Email);
-                        intent.putExtras(bundle);
+//                        bundle.putString("email", Email);
+//                        intent.putExtras(bundle);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         editor.putString("email",email.getText().toString());
                         editor.putString("login","true");
                         editor.commit();
                         editor.apply();
-
                         startActivity(intent);
                         finish();
                         Toast.makeText(this, "Login Successfully", Toast.LENGTH_LONG).show();

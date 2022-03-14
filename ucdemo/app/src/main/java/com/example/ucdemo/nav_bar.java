@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -18,12 +19,13 @@ public class nav_bar extends AppCompatActivity {
     MeowBottomNavigation bottomNavigation;
     Fragment fragment;
     Boolean exit=false;
+    SharedPreferences save_data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_bar);
-        Bundle bundle = getIntent().getExtras();
-        String Email = bundle.getString("email");
+        save_data = getSharedPreferences("SAVE DATA", MODE_PRIVATE);
+        String Email = save_data.getString("email","null");
 
         Log.d("email bundle", ""+Email);
         //Assign Variable

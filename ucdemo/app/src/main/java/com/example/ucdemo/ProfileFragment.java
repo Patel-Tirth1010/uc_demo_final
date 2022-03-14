@@ -37,6 +37,7 @@ import java.util.Map;
  */
 public class ProfileFragment extends Fragment{
 
+    Bundle bundle = new Bundle();
     String Email;
     public List<String> option = Arrays.asList("Feedback History","Order History","About Us","Log Out","Exit");
 
@@ -112,7 +113,6 @@ public class ProfileFragment extends Fragment{
 //                    }
 //                };
 
-            Bundle bundle = new Bundle();
             StringRequest request = new StringRequest(Request.Method.POST, "https://urbanclap1.000webhostapp.com/Customer/edit_profile/Retrive_data.php", response -> {
 
                 try {
@@ -148,6 +148,10 @@ public class ProfileFragment extends Fragment{
                             bundle.putString("state",state);
                             bundle.putString("pincode",pincode);
 
+                            Intent intent = new Intent(getContext(), EditProfile.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+
                             Toast.makeText(getContext(),fname+lname+ph_no+email+address+city+state+pincode,Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -167,11 +171,9 @@ public class ProfileFragment extends Fragment{
 
 //                RequestQueue requestQueue1 = Volley.newRequestQueue(getActivity());
 //                requestQueue1.add(request1);
-            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
-            Intent intent = new Intent(getContext(), EditProfile.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
+
         });
 
         return view;
