@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
     String url;
     SharedPreferences save_data;
     SharedPreferences.Editor editor;
+    int user = 0;
    public Bundle bundle = new Bundle();
     boolean flag = true;
 
@@ -97,10 +98,13 @@ public class Login extends AppCompatActivity {
             } else {
 
                 if (r_cust.isChecked()) {
+                    user = 1;
                     url = "https://urbanclap1.000webhostapp.com/Customer/Login/verify_cred.php";
                 } else if (r_emp.isChecked()) {
+                    user = -1;
                     url = "https://urbanclap1.000webhostapp.com/Employee/Login/verify_cred.php";
                 } else {
+                    user = 0;
                     url = "https://urbanclap1.000webhostapp.com/Admin/Login/verify_cred.php";
                 }
 
@@ -111,6 +115,8 @@ public class Login extends AppCompatActivity {
                     String success = jsonObject.getString("success");
 
                     if (success.equals("1")) {
+
+                        if(user == 1)
                         Intent intent = new Intent(getApplicationContext(), nav_bar.class);// New activity
 //                        Bundle bundle = new Bundle();
 //                        bundle.putString("email", Email);
